@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Backbone.js and jQuery with Templating</title>
+	
+	<!--- Include the jQuery UI CSS and our custom CSS --->
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/themes/cupertino/jquery-ui.css" type="text/css" rel="stylesheet" />
+	<link href="./css/index.css" type="text/css" rel="stylesheet" />
+	
+	<!--- Include our libraries from online.  You could always copy these to your own webserver but you don't need to: --->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.js"></script>
+	<script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore.js"></script>
+	<script type="text/javascript" src="http://documentcloud.github.com/backbone/backbone.js"></script>
+	<script type="text/javascript" src="https://github.com/cowboy/jquery-misc/raw/master/jquery.ba-serializeobject.min.js"></script>
+	
+	<!--- This is our main JavaScript file.  A lot of code in there: --->
+	<script type="text/javascript" src="./js/artist.js"></script>
+	
+</head>
+<body>
+	<!--- This is our top-level application container --->
+	<div id="artistapp">
+		
+		<!--- Our button 'menu'.  You could always add additional buttons here if you needed: --->
+		<div class='buttons'>
+			<input type='button' class='add' id='newArtist' value='Add Artist' />
+		</div>
+	
+		<!--- This is our artists 'table'.  The main styling is in index.css above. --->
+		<div id="artists">
+			<div id="artist-list">
+				<div class='artist header'>
+					<div class='name'>
+						Name
+					</div>
+					<div class='address'>
+						Address
+					</div>
+					<div class='phone'>
+						Phone
+					</div>
+					<div class='action'>
+						Action
+					</div>
+				</div>
+				<!--- We're going to append our persisted artists here, after the header --->
+			</div> 
+		</div> 
+	</div>
+	
+	<!--- 
+		Everything below is a template.  Since they are in <script> tags, they aren't going to display on the page.
+		The <%= VARIABLE %> codes are variables that will be replaced by Underscore.js template system.  We could
+		have used jQuery's templating engine instead, if we had wanted
+	--->
+	
+	<!--- This is our record template.  Each record will become a 'row' in our table: --->
+	<script type="text/template" id="item-template">
+		<div class='name'>
+			<%= FIRSTNAME %> <%= LASTNAME %>
+		</div>
+		<div class='address'>
+			<%= ADDRESS %>, <%= CITY %>, <%= STATE %> <%= POSTALCODE %>
+		</div>
+		<div class='phone'>
+			<%= PHONE %>
+		</div>
+		<div class='action'>
+			<input type='button' class='edit' value='Edit' />
+			<input type='button' class='delete' value='Delete' />
+		</div>
+	</script>
+	
+	<!--- 
+		This is the add/edit template.  
+		This will either be displayed blank if we are adding a record or the record's data if we are editing.
+		This will be displayed in a modal window. 
+	--->
+	<script type="text/template" id="edit-template">
+		<div id="editArtist" title="Edit Artist">
+			<form name="formEditArtist" id="formEditArtist" class='editForm'>
+				<div class='FirstName'>
+					<label for="FirstName">FirstName</label>
+					<input type="text" name="FirstName" id="FirstName" value="<%= FIRSTNAME %>" />
+				</div>
+				<div class='LastName'>
+					<label for="LastName">LastName</label>
+					<input type="text" name="LastName" id="LastName" value="<%= LASTNAME %>" />
+				</div>
+				<div class='Address'>
+					<label for="Address">Address</label>
+					<input type="text" name="Address" id="Address" value="<%= ADDRESS %>" />
+				</div>
+				<div class='City'>
+					<label for="City">City</label>
+					<input type="text" name="City" id="City" value="<%= CITY %>" />
+				</div>
+				<div class='State'>
+					<label for="State">State</label>
+					<input type="text" name="State" id="State" value="<%= STATE %>" />
+				</div>
+				<div class='PostalCode'>
+					<label for="PostalCode">PostalCode</label>
+					<input type="text" name="PostalCode" id="PostalCode" value="<%= POSTALCODE %>" />
+				</div>
+				<div class='Phone'>
+					<label for="Phone">Phone</label>
+					<input type="text" name="Phone" id="Phone" value="<%= PHONE %>" />
+				</div>
+			</form>
+		</div>
+	</script>
+	
+	<!--- This is our delete confirmation record.  This will be displayed in a modal window. --->
+	<script type="text/template" id="delete-template">
+		<div id="deleteArtist" title="Delete Artist">
+			Are you sure you want to delete <%= FIRSTNAME %> <%= LASTNAME %>?
+		</div>
+	</script>
+
+</body>
+</html>

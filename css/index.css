@@ -1,0 +1,56 @@
+body{
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif
+}
+#artistapp{
+	width: 825px;
+	margin: 0 auto;
+}
+.header {
+	font-weight: bold;
+}
+.artist div{
+	float: left;
+	height: 25px;
+}
+#artist-list div.artist:nth-child(odd) div {
+  background-color: #D7EBF9;
+}
+#artist-list div.artist:nth-child(even) div {
+  background-color: #AED0EA;
+}
+.artist div.name{
+	width: 200px;
+}
+.artist div.address{
+	width: 400px;
+}
+
+.artist div.phone{
+	width: 125px;
+}
+.artist div.action{
+	width: 100px;
+}		
+.artist{
+	clear: both;
+}
+.hidden{
+    display: none;
+}
+.editForm div{
+	margin-bottom: 5px;
+}
+.editForm label{
+	width: 135px;
+	float: left;
+}
+.editForm input{
+	width: 300px;
+}
+.buttons {
+	float: right;
+	margin-bottom: 10px;
+}
+buttons .add {
+	width: 200px;
+}
