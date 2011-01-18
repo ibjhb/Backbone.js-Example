@@ -64,9 +64,7 @@
 			<%= ADDRESS %>, <%= CITY %>, <%= STATE %> <%= POSTALCODE %>
 		</div>
 		<div class='phone'>
-			<%= typeof PHONE %>
-			asdf
-			<% if (typeof PHONE) { %>
+			<% if (typeof PHONE != "undefined") { %>
 				<%= PHONE %>
 			<% } %>
 		</div>
@@ -110,7 +108,7 @@
 				</div>
 				<div class='Phone'>
 					<label for="Phone">Phone</label>
-					<input type="text" name="Phone" id="Phone" value="<%= PHONE %>" />
+					<input type="text" name="Phone" id="Phone" value="<% if (typeof PHONE != "undefined") { %><%= PHONE %><% } %>" />
 				</div>
 			</form>
 		</div>
