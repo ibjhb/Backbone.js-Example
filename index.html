@@ -64,7 +64,9 @@
 			<%= ADDRESS %>, <%= CITY %>, <%= STATE %> <%= POSTALCODE %>
 		</div>
 		<div class='phone'>
-			<%= PHONE %>
+			<% if (typeof PHONE) { %>
+				<%= PHONE %>
+			<% } %>
 		</div>
 		<div class='action'>
 			<input type='button' class='edit' value='Edit' />
